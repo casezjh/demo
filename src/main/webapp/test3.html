@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello</title>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<h2>Hello World!</h2>
+<h1>arithmetic:</h1>
+version:<input type="text" id="version"/></br>
+
+<input type="text" id="first"/>
+<select id="arithmetic">
+	<option value="plus" selected>+</option>
+	<option value="minus">-</option>
+	<option value="multiply">*</option>
+	<option value="divide">/</option>
+</select>
+<input type="text" id="second">
+=<input type="text" disabled="true" id="result"/>
+</br>
+<button id="btn" value="提交"/>
+submit</br>
+</body>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#btn").click(function () {
+			var version = $("#version").val();
+			var arithmetic = $("#arithmetic").val();
+			var url = "/demo/v" + version + "/" + arithmetic;
+			var version = $("#version").val();
+			var first = $("#first").val();
+			var second = $("#second").val();
+			var result = $("#result").val;
+			if (version == "") {
+				alert("please input version");
+				return;
+			}
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: {"first": first, "second": second},
+				contentType: "application/x-www-form-urlencoded",
+				dataType: "json",
+				success: function (resp) {
+					alert("testOK");
+					result = resp.result;
+					$("#result").val(result);
+					console.log(result);
+					console.log(resp);
+				},
+				error: function () {
+					alert("error");
+				}
+			})
+		})
+	})
+
+</script>
+</html>

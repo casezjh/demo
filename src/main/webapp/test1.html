@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>hello</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<h2>Hello World!</h2>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#trigger_test_api").click(function () {
+
+      var version = $("#version").val();
+      if (version == "") {
+        alert("please input version");
+        return;
+      }
+      var url = "/demo/v" + version + "/test_api";
+      $.ajax({
+        type: "GET",
+        url: url,
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        dataType: "json",
+        success: function (resp) {
+          if ((resp.ret) == '1000') {
+            $("#trigger_test_api").hide();
+            $("#show").innerText = resp.toString();
+            alert("响应成功");
+          } else {
+            alert("传递失败");
+          }
+        },
+        error: function (resp) {
+          alert("进入ERROR回调");
+        }
+
+      })
+
+    })
+  })
+
+</script>
+
+输入版本号：<input type="text" id="version"/>
+</br>
+<button value="test-api" id="trigger_test_api"/>
+<h3 id="show"></h3>
+</body>
+</html>  
