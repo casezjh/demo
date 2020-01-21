@@ -87,3 +87,5 @@ buildNumber.properties
 
 ### exclude test
 #/test/
+
+#/asda
