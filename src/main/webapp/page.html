@@ -5,14 +5,18 @@
     <!--    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">-->
     <title>hello</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <%
+    String path=request.getContextPath();
+    String basePath=request.getScheme()+"://"request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
 </head>
 <body>
 <h2>Hello World!</h2>
-<a href="/demo/test?num=1">test1</a>
-<a href="/demo/test?num=2">test2</a>
-<a href="/demo/test?num=3">test3</a>
-<a href="/demo/test?num=4">test4</a>
-<a href="/demo/test?num=5">test5</a>
+<a href="/demo/demo/test?num=1">test1</a>
+<a href="/demo/demo/test?num=2">test2</a>
+<a href="/demo/demo/test?num=3">test3</a>
+<a href="/demo/demo/test?num=4">test4</a>
+<a href="/demo/demo/test?num=5">test5</a>
 
 <!--<script type="text/javascript">
     $(document).ready(function () {

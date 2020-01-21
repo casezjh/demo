@@ -22,6 +22,9 @@
     <servlet-mapping>
         <servlet-name>demo</servlet-name>
         <!--url-pattern决定了资源文件的路径写法-->
+        <!--https://blog.csdn.net/qq_29028175/article/details/53559738-->
+       <!--因为以'/'开头，所以路径是相对于项目根目录，[http://localhost:8080/项目名称/]-->
+        <!--例如下面例子：路径为：[http://localhost:8080/demo(项目名称)/demo/(自定义的jersey访问路径)/]-->
         <url-pattern>/demo/*</url-pattern>
     </servlet-mapping>
 </web-app>

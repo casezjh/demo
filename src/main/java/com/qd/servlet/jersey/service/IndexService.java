@@ -2,6 +2,7 @@ package com.qd.servlet.jersey.service;
 
 
 import javax.inject.Singleton;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response;
 @Produces("text/html")
 public class IndexService {
 
+    String rootpath="";
     @GET
     @Path("hello")
     public String getHello() {
@@ -23,10 +25,12 @@ public class IndexService {
 
     @GET
 //    @Path("")
-    public void send(@Context HttpServletResponse resp) {
+    public void send(@Context HttpServletResponse resp, @Context HttpServletRequest req) {
         try {
+            rootpath=req.getServletPath();
+            System.out.println(rootpath);
             System.out.println(" success in send");
-            resp.sendRedirect("./page.html");
+            resp.sendRedirect("/page.html");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,9 +38,10 @@ public class IndexService {
 
     @GET
     @Path("test")
-    public void tojsp(@DefaultValue("1") @QueryParam("num") int num, @Context HttpServletResponse resp) {
+    public void tojsp(@DefaultValue("1") @QueryParam("num") int num, @Context HttpServletRequest req,@Context HttpServletResponse resp) {
+        rootpath=req.getServletPath();
         System.out.println(num);
-        String jsp = "/test" + num + ".html";
+        String jsp = rootpath+"/test" + num + ".html";
         System.out.println(jsp);
         try {
             System.out.println("success in " + jsp);

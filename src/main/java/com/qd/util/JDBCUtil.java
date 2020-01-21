@@ -86,12 +86,6 @@ public class JDBCUtil {
                 e.printStackTrace();
             }
         }
-        try {
-            statement.execute(testConnection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         return connection;
     }
 }
