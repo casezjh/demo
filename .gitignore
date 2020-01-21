@@ -84,3 +84,6 @@ buildNumber.properties
 
 ###  exclude svn
 .svn
+
+### exclude test
+#/test/

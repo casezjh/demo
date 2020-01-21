@@ -98,7 +98,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.ext/jersey-mvc -->
-        <!-- <dependency>
+         <dependency>
              <groupId>org.glassfish.jersey.ext</groupId>
              <artifactId>jersey-mvc</artifactId>
              <version>2.30</version>
@@ -107,7 +107,7 @@
              <groupId>org.glassfish.jersey.ext</groupId>
              <artifactId>jersey-mvc-jsp</artifactId>
              <version>2.30</version>
-         </dependency>-->
+         </dependency>
         <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
@@ -120,14 +120,25 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.18</version>
         </dependency>
-
-
-        <!-- uncomment this to get JSON support
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.6.0-RC1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+         <!--uncomment this to get JSON support-->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
         </dependency>
-        -->
+
     </dependencies>
     <properties>
         <jersey.version>2.30</jersey.version>
