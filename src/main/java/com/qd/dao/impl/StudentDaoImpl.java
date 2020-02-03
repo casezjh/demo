@@ -29,13 +29,14 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> getAllStudent() throws Exception {
         String sql = "";
         Statement statement = null;
-        List<Student> list=new ArrayList<>();
+        List<Student> list = new ArrayList<>();
         try {
             statement = connection.createStatement();
-            sql="select * from student";
-            ResultSet resultSet=statement.executeQuery(sql);
-            while(resultSet.next()){
-                Student student=new Student();
+            sql = "select * from stu_info";
+            ResultSet resultSet = statement.executeQuery(sql);
+            log.info(sql);
+            while (resultSet.next()) {
+                Student student = new Student();
                 student.setFirstname(resultSet.getString("firstname"));
                 student.setLastname(resultSet.getString("lastname"));
                 student.setAge(resultSet.getInt("age"));
@@ -43,10 +44,10 @@ public class StudentDaoImpl implements StudentDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            log.error("查询全部学生信息出错");
+            log.error("查询全部学生信息出错,请联系管理员");
         }
-        if(list.isEmpty()){
-           throw  new Exception ("结果集为空");
+        if (list.isEmpty()) {
+            throw new Exception("未录入学生信息");
         }
         return list;
     }

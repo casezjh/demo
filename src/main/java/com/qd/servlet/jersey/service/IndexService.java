@@ -1,6 +1,9 @@
 package com.qd.servlet.jersey.service;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.inject.Singleton;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -8,14 +11,14 @@ import javax.ws.rs.core.Context;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.Response;
 
 @Singleton
 @Path("")
 @Produces("text/html")
 public class IndexService {
+    private static final Logger log = LoggerFactory.getLogger(IndexService.class);
+    String rootpath = "";
 
-    String rootpath="";
     @GET
     @Path("hello")
     public String getHello() {
@@ -27,9 +30,8 @@ public class IndexService {
 //    @Path("")
     public void send(@Context HttpServletResponse resp, @Context HttpServletRequest req) {
         try {
-            rootpath=req.getServletPath();
-            System.out.println(rootpath);
-            System.out.println(" success in send");
+            rootpath = req.getServletPath();
+            log.info(rootpath+"------------>"+"success in send");
             resp.sendRedirect("/page.html");
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,13 +40,18 @@ public class IndexService {
 
     @GET
     @Path("test")
-    public void tojsp(@DefaultValue("1") @QueryParam("num") int num, @Context HttpServletRequest req,@Context HttpServletResponse resp) {
-        rootpath=req.getServletPath();
+    public void tojsp(@DefaultValue("1") @QueryParam("num") int num, @Context HttpServletRequest req, @Context HttpServletResponse resp) {
+        rootpath = req.getServletPath();
         System.out.println(num);
-        String jsp = rootpath+"/test" + num + ".html";
-        System.out.println(jsp);
+        String jsp = "";
+        if (num == 4) {
+            jsp = rootpath + "/test" + num + ".jsp";
+        } else {
+            jsp = rootpath + "/test" + num + ".html";
+        }
+
         try {
-            System.out.println("success in " + jsp);
+            log.info("success in " + jsp);
             resp.sendRedirect(jsp);
         } catch (IOException e) {
             e.printStackTrace();

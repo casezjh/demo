@@ -9,19 +9,43 @@
 </head>
 <body>
 <h2>Hello World!</h2>
+<button value="call four" id="btn"></button>
+<script>
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            var url="/demo/demo/page/tutorial/student/list"
+            $.ajax({
+                type:"GET",
+                url:url,
+                contentType:"application/x-www-form-urlencoded",
+                dataType:("text/html"),
+                success:function (msg) {
+                    alert("ok");
+                }
+            })
+        })
+    })
+</script>
 <table style="width: 100%">
     <tr>
         <th>FirstName</th>
         <th>LastName</th>
         <th>Age</th>
     </tr>
-    <c:forEach var="" items="">
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </c:forEach>
+    <c:choose>
+        <c:when test="${studentList!=null}">
+            <c:forEach var="stu" items="${studentList}">
+                <tr>
+                    <td>${stu.firstname}</td>
+                    <td>${stu.lastname}</td>
+                    <td>${stu.age}</td>
+                </tr>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <tr>数据为空</tr>
+        </c:otherwise>
+    </c:choose>
 </table>
 </body>
 </html>
