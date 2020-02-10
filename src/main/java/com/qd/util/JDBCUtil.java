@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 
 public class JDBCUtil {
-    private static final Logger log = LoggerFactory.getLogger(JDBCUtil.class);
+    Logger log = LoggerFactory.getLogger(JDBCUtil.class);
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String url = "jdbc:mysql://192.168.1.4:3306/student?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true";
+    private static final String url = "jdbc:mysql://192.168.3.85:3306/student?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
     private static final String username = "case";
     private static final String password = "case";
     private static final String testConnection = "select 1 from dual";
